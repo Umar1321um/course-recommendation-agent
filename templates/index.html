@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Recommendation Agent</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="wrap">
+    <header class="masthead">
+      <div class="eyebrow">Enrollment Form · No. 001</div>
+      <h1>Course Recommendation Agent</h1>
+      <p>Tell us where you're starting from and where you want to go. We'll chart the shortest honest route, prerequisite by prerequisite.</p>
+    </header>
+
+    <div class="card">
+      <h2>Your Profile</h2>
+      <p class="subtitle">A few details, and we'll build your personalised path.</p>
+
+      <form action="{{ url_for('recommend') }}" method="post">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="e.g. Asha" required>
+
+        <label for="background">Background <span class="hint">(a sentence or two)</span></label>
+        <textarea id="background" name="background" placeholder="e.g. Second-year commerce student, no coding experience yet."></textarea>
+
+        <label for="goal">Career goal</label>
+        <select id="goal" name="goal" required>
+          <option value="" disabled selected>Choose a goal…</option>
+          {% for g in goals %}
+          <option value="{{ g }}">{{ g.title() }}</option>
+          {% endfor %}
+        </select>
+
+        <label>Skills you already know <span class="hint">(optional — tap any that apply)</span></label>
+        <div class="skills-grid">
+          {% for s in skills %}
+          <label class="skill-chip">
+            <input type="checkbox" name="known_skills" value="{{ s }}">
+            <span>{{ human_skill(s) }}</span>
+          </label>
+          {% endfor %}
+        </div>
+
+        <button type="submit" class="submit">Build my learning path →</button>
+      </form>
+    </div>
+
+    <footer class="note">Course Recommendation Agent (Beginner) — runs entirely on your machine.</footer>
+  </div>
+</body>
+</html>

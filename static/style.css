@@ -1,0 +1,405 @@
+/* ---------------------------------------------------------------
+   Course Recommendation Agent — "Enrollment Ledger" design
+   Palette: warm paper, deep ink, amber wax-seal accent
+   Display type: Fraunces (characterful serif)
+   Body type: Inter · Mono (course codes): IBM Plex Mono
+------------------------------------------------------------------ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+:root {
+  --paper: #f6f1e7;
+  --paper-raised: #fffdf8;
+  --ink: #1c2541;
+  --ink-soft: #55618a;
+  --ink-faint: #9098b5;
+  --line: #ddd3ba;
+  --amber: #c08a2e;
+  --amber-deep: #93691f;
+  --green: #4b7b5d;
+  --shadow: 0 1px 2px rgba(28, 37, 65, 0.06), 0 8px 24px rgba(28, 37, 65, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(28, 37, 65, 0.05) 1px, transparent 0);
+  background-size: 22px 22px;
+  color: var(--ink);
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+}
+
+.wrap {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+header.masthead {
+  text-align: center;
+  margin-bottom: 40px;
+  padding-bottom: 28px;
+  border-bottom: 3px double var(--line);
+}
+
+header.masthead .eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--amber-deep);
+  font-weight: 600;
+}
+
+header.masthead h1 {
+  font-family: 'Fraunces', serif;
+  font-weight: 800;
+  font-size: clamp(32px, 5vw, 48px);
+  margin: 6px 0 8px;
+  letter-spacing: -0.01em;
+}
+
+header.masthead p {
+  color: var(--ink-soft);
+  font-size: 15px;
+  max-width: 460px;
+  margin: 0 auto;
+}
+
+/* ---------- Form (Enrollment card) ---------- */
+
+.card {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  box-shadow: var(--shadow);
+  padding: 36px;
+}
+
+.card + .card {
+  margin-top: 28px;
+}
+
+.card h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.card .subtitle {
+  color: var(--ink-soft);
+  font-size: 14px;
+  margin: 0 0 24px;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 6px;
+  margin-top: 20px;
+}
+
+label:first-of-type {
+  margin-top: 0;
+}
+
+.hint {
+  font-size: 12.5px;
+  color: var(--ink-faint);
+  font-weight: 400;
+  margin-left: 6px;
+}
+
+input[type="text"],
+textarea,
+select {
+  width: 100%;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  padding: 11px 13px;
+  border: 1.5px solid var(--line);
+  border-radius: 3px;
+  background: var(--paper);
+  color: var(--ink);
+  transition: border-color 0.15s ease;
+}
+
+input[type="text"]:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--amber);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 70px;
+}
+
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%2355618a' stroke-width='1.6' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.skill-chip {
+  position: relative;
+}
+
+.skill-chip input {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  margin: 0;
+  top: 0;
+  left: 0;
+}
+
+.skill-chip span {
+  display: block;
+  font-size: 13px;
+  padding: 8px 12px;
+  border: 1.5px solid var(--line);
+  border-radius: 3px;
+  background: var(--paper);
+  text-align: center;
+  transition: all 0.15s ease;
+  font-weight: 500;
+}
+
+.skill-chip input:checked + span {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper-raised);
+}
+
+.skill-chip input:focus-visible + span {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+}
+
+button.submit {
+  margin-top: 28px;
+  width: 100%;
+  background: var(--ink);
+  color: var(--paper-raised);
+  border: none;
+  padding: 14px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: background 0.15s ease;
+}
+
+button.submit:hover {
+  background: var(--amber-deep);
+}
+
+button.submit:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+}
+
+/* ---------- Result: the route ledger ---------- */
+
+.result-header {
+  margin-bottom: 32px;
+}
+
+.result-header .eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--amber-deep);
+  font-weight: 600;
+}
+
+.result-header h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(28px, 4vw, 38px);
+  font-weight: 800;
+  margin: 6px 0 10px;
+}
+
+.result-header .goal-line {
+  color: var(--ink-soft);
+  font-size: 15px;
+}
+
+.known-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  background: rgba(75, 123, 93, 0.1);
+  border: 1px solid rgba(75, 123, 93, 0.35);
+  color: var(--green);
+  padding: 8px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.route {
+  position: relative;
+  padding-left: 56px;
+}
+
+.route::before {
+  content: "";
+  position: absolute;
+  left: 22px;
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--amber) 0,
+    var(--amber) 6px,
+    transparent 6px,
+    transparent 12px
+  );
+}
+
+.stop {
+  position: relative;
+  margin-bottom: 22px;
+}
+
+.stop-marker {
+  position: absolute;
+  left: -56px;
+  top: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--paper-raised);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 600;
+  font-size: 15px;
+  border: 3px solid var(--paper);
+  box-shadow: 0 0 0 2px var(--amber);
+}
+
+.stop-card {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  box-shadow: var(--shadow);
+  padding: 20px 24px;
+}
+
+.stop-card .code {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--amber-deep);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.stop-card h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 19px;
+  font-weight: 600;
+  margin: 4px 0 4px;
+}
+
+.stop-card .level {
+  display: inline-block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  color: var(--ink-soft);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 2px 8px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.stop-card .reason {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--ink-soft);
+  font-size: 15px;
+}
+
+.actions {
+  margin-top: 36px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.actions a {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  border: 1.5px solid var(--line);
+  padding: 10px 20px;
+  border-radius: 3px;
+  transition: all 0.15s ease;
+}
+
+.actions a:hover {
+  border-color: var(--amber);
+  color: var(--amber-deep);
+}
+
+footer.note {
+  text-align: center;
+  margin-top: 56px;
+  font-size: 12.5px;
+  color: var(--ink-faint);
+}
+
+@media (max-width: 560px) {
+  .card {
+    padding: 24px;
+  }
+  .route {
+    padding-left: 44px;
+  }
+  .stop-marker {
+    left: -44px;
+    width: 36px;
+    height: 36px;
+    font-size: 12px;
+  }
+}

@@ -1,4 +1,6 @@
-# This project uses only the Python standard library.
-# No external dependencies are required to run the agent or its tests.
+# The core CLI agent uses only the Python standard library.
+# Flask is only required if you want to run the optional web UI (app.py).
+flask>=3.0.0
+
 # (Optional) pytest can be used to run tests with a nicer runner:
 # pytest>=7.0.0

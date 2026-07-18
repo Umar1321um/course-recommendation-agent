@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ path.student_name }}'s Learning Path</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="wrap">
+    <div class="result-header">
+      <div class="eyebrow">Route Ledger</div>
+      <h1>{{ path.student_name }}'s Learning Path</h1>
+      <p class="goal-line">Goal: <strong>{{ path.goal }}</strong></p>
+
+      {% if path.already_known %}
+      <div class="known-banner">
+        ✓ Already known: {{ path.already_known | map('replace', '_', ' ') | join(', ') }}
+      </div>
+      {% endif %}
+    </div>
+
+    {% if path.unmet_goal_skills %}
+      <div class="card">
+        <h2>Hmm, one thing</h2>
+        {% for msg in path.unmet_goal_skills %}
+          <p class="subtitle">{{ msg }}</p>
+        {% endfor %}
+        <p class="subtitle">Try going back and choosing a goal from the list.</p>
+      </div>
+    {% elif not path.steps %}
+      <div class="card empty-state">
+        🎉 You already have every skill this goal requires. No further courses needed!
+      </div>
+    {% else %}
+      <div class="route">
+        {% for step in path.steps %}
+        <div class="stop">
+          <div class="stop-marker">{{ step.order }}</div>
+          <div class="stop-card">
+            <div class="code">{{ step.course_id }}</div>
+            <h3>{{ step.title }}</h3>
+            <span class="level">{{ step.level }}</span>
+            <p class="reason">{{ step.reason }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <div class="actions">
+      <a href="{{ url_for('index') }}">← Build another path</a>
+    </div>
+
+    <footer class="note">Course Recommendation Agent (Beginner) — runs entirely on your machine.</footer>
+  </div>
+</body>
+</html>
