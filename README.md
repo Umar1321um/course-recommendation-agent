@@ -2,7 +2,7 @@
 
 An AI agent that suggests a **personalised learning path** for a student based on their **background**, **career goal**, and **current skills** — by modeling a course catalogue with prerequisites and explaining *why* each course was chosen.
 
-Live demo: _add your Render or ngrok link here once deployed_
+Live demo: (https://course-recommendation-agent-pkqw.onrender.com)
 
 ---
 
@@ -138,11 +138,7 @@ Want a link you can share with anyone (recruiters, friends, an interviewer) with
 5. Start command: `gunicorn app:app`
 6. Deploy — you'll get a permanent public URL like `https://course-recommendation-agent.onrender.com`
 
-**Quick temporary link (share what's running right now):**
-1. Install [ngrok](https://ngrok.com/download), sign up free, add your authtoken
-2. Run `python app.py` in one terminal
-3. Run `ngrok http 5000` in a second terminal
-4. Share the `https://....ngrok-free.app` link it gives you (only works while both terminals stay open)
+
 
 ## Running tests
 
