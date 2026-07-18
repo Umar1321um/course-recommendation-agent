@@ -1,0 +1,4 @@
+# This project uses only the Python standard library.
+# No external dependencies are required to run the agent or its tests.
+# (Optional) pytest can be used to run tests with a nicer runner:
+# pytest>=7.0.0

@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Asha",
+    "background": "Second-year commerce student with no coding experience, curious about tech careers.",
+    "goal": "Data Analyst",
+    "known_skills": []
+  },
+  {
+    "name": "Rahul",
+    "background": "Self-taught hobbyist who has built a few HTML/CSS static pages for friends.",
+    "goal": "Full Stack Developer",
+    "known_skills": ["html_css"]
+  },
+  {
+    "name": "Meera",
+    "background": "Mechanical engineering graduate with strong math skills from coursework, new to programming.",
+    "goal": "Machine Learning Engineer",
+    "known_skills": ["linear_algebra", "statistics"]
+  },
+  {
+    "name": "Vikram",
+    "background": "Junior backend developer who already writes Python scripts and basic APIs at work.",
+    "goal": "Cloud Engineer",
+    "known_skills": ["programming_basics", "python", "backend_dev"]
+  }
+]

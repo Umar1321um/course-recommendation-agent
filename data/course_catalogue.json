@@ -1,0 +1,188 @@
+{
+  "skills": {
+    "programming_basics": {
+      "prerequisites": [],
+      "provided_by": "CS101"
+    },
+    "python": {
+      "prerequisites": ["programming_basics"],
+      "provided_by": "CS102"
+    },
+    "html_css": {
+      "prerequisites": [],
+      "provided_by": "WD101"
+    },
+    "javascript": {
+      "prerequisites": ["html_css"],
+      "provided_by": "WD102"
+    },
+    "frontend_frameworks": {
+      "prerequisites": ["javascript"],
+      "provided_by": "WD201"
+    },
+    "backend_dev": {
+      "prerequisites": ["javascript", "python"],
+      "provided_by": "WD202"
+    },
+    "databases": {
+      "prerequisites": ["programming_basics"],
+      "provided_by": "DB101"
+    },
+    "fullstack_project": {
+      "prerequisites": ["frontend_frameworks", "backend_dev", "databases"],
+      "provided_by": "WD301"
+    },
+    "statistics": {
+      "prerequisites": [],
+      "provided_by": "MATH101"
+    },
+    "linear_algebra": {
+      "prerequisites": [],
+      "provided_by": "MATH102"
+    },
+    "data_analysis": {
+      "prerequisites": ["python", "statistics"],
+      "provided_by": "DS101"
+    },
+    "data_visualization": {
+      "prerequisites": ["data_analysis"],
+      "provided_by": "DS102"
+    },
+    "machine_learning": {
+      "prerequisites": ["data_analysis", "linear_algebra"],
+      "provided_by": "DS201"
+    },
+    "deep_learning": {
+      "prerequisites": ["machine_learning"],
+      "provided_by": "DS301"
+    },
+    "mlops": {
+      "prerequisites": ["machine_learning", "backend_dev"],
+      "provided_by": "DS302"
+    },
+    "cloud_fundamentals": {
+      "prerequisites": ["programming_basics"],
+      "provided_by": "CL101"
+    },
+    "devops_basics": {
+      "prerequisites": ["cloud_fundamentals", "backend_dev"],
+      "provided_by": "CL201"
+    }
+  },
+  "courses": {
+    "CS101": {
+      "title": "Introduction to Programming",
+      "skill": "programming_basics",
+      "level": "beginner",
+      "description": "Fundamentals of programming: variables, control flow, functions, and basic problem solving."
+    },
+    "CS102": {
+      "title": "Python Programming",
+      "skill": "python",
+      "level": "beginner",
+      "description": "Core Python syntax, data structures, file I/O, and writing small scripts and programs."
+    },
+    "WD101": {
+      "title": "HTML & CSS Foundations",
+      "skill": "html_css",
+      "level": "beginner",
+      "description": "Building and styling static web pages with semantic HTML and modern CSS."
+    },
+    "WD102": {
+      "title": "JavaScript Essentials",
+      "skill": "javascript",
+      "level": "beginner",
+      "description": "Core JavaScript: DOM manipulation, events, async programming, and browser basics."
+    },
+    "WD201": {
+      "title": "Modern Frontend Frameworks",
+      "skill": "frontend_frameworks",
+      "level": "intermediate",
+      "description": "Building interactive UIs with a component-based framework (e.g. React) and state management."
+    },
+    "WD202": {
+      "title": "Backend Development with Node & Python",
+      "skill": "backend_dev",
+      "level": "intermediate",
+      "description": "Building REST APIs, server-side logic, authentication, and application architecture."
+    },
+    "DB101": {
+      "title": "Databases & SQL",
+      "skill": "databases",
+      "level": "beginner",
+      "description": "Relational database design, SQL querying, indexing, and basic data modeling."
+    },
+    "WD301": {
+      "title": "Full-Stack Capstone Project",
+      "skill": "fullstack_project",
+      "level": "advanced",
+      "description": "End-to-end build of a full-stack web application integrating frontend, backend, and a database."
+    },
+    "MATH101": {
+      "title": "Statistics for Data Science",
+      "skill": "statistics",
+      "level": "beginner",
+      "description": "Descriptive and inferential statistics, probability, and hypothesis testing for data work."
+    },
+    "MATH102": {
+      "title": "Linear Algebra Fundamentals",
+      "skill": "linear_algebra",
+      "level": "beginner",
+      "description": "Vectors, matrices, and linear transformations underpinning ML algorithms."
+    },
+    "DS101": {
+      "title": "Data Analysis with Python",
+      "skill": "data_analysis",
+      "level": "intermediate",
+      "description": "Cleaning, exploring, and analyzing datasets using pandas and numpy."
+    },
+    "DS102": {
+      "title": "Data Visualization",
+      "skill": "data_visualization",
+      "level": "intermediate",
+      "description": "Communicating insights through effective charts and dashboards (matplotlib, seaborn, plotly)."
+    },
+    "DS201": {
+      "title": "Machine Learning Foundations",
+      "skill": "machine_learning",
+      "level": "intermediate",
+      "description": "Supervised and unsupervised learning algorithms, model evaluation, and scikit-learn."
+    },
+    "DS301": {
+      "title": "Deep Learning",
+      "skill": "deep_learning",
+      "level": "advanced",
+      "description": "Neural networks, CNNs, RNNs/Transformers, and training with PyTorch or TensorFlow."
+    },
+    "DS302": {
+      "title": "MLOps & Model Deployment",
+      "skill": "mlops",
+      "level": "advanced",
+      "description": "Packaging, deploying, monitoring, and maintaining ML models in production."
+    },
+    "CL101": {
+      "title": "Cloud Computing Fundamentals",
+      "skill": "cloud_fundamentals",
+      "level": "beginner",
+      "description": "Core cloud concepts: compute, storage, networking, and working with a major cloud provider."
+    },
+    "CL201": {
+      "title": "DevOps & CI/CD Basics",
+      "skill": "devops_basics",
+      "level": "intermediate",
+      "description": "Version control workflows, CI/CD pipelines, containers, and infrastructure basics."
+    }
+  },
+  "goals": {
+    "web developer": ["html_css", "javascript", "frontend_frameworks", "backend_dev", "databases", "fullstack_project"],
+    "frontend developer": ["html_css", "javascript", "frontend_frameworks"],
+    "backend developer": ["python", "databases", "backend_dev"],
+    "full stack developer": ["html_css", "javascript", "frontend_frameworks", "backend_dev", "databases", "fullstack_project"],
+    "data analyst": ["python", "statistics", "data_analysis", "data_visualization"],
+    "data scientist": ["python", "statistics", "linear_algebra", "data_analysis", "machine_learning"],
+    "machine learning engineer": ["python", "statistics", "linear_algebra", "data_analysis", "machine_learning", "deep_learning", "mlops"],
+    "ai engineer": ["python", "statistics", "linear_algebra", "data_analysis", "machine_learning", "deep_learning"],
+    "cloud engineer": ["python", "cloud_fundamentals", "devops_basics"],
+    "devops engineer": ["python", "backend_dev", "cloud_fundamentals", "devops_basics"]
+  }
+}
